@@ -1,2 +1,10 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<%= link_to 'add a bookmark', new_list_bookmark_path(@list) %>
+<h1><%= @list.name %></h1>
+<% @list.bookmarks.each do |bookmark| %>
+  <%= image_tag "https://image.tmdb.org/t/p/w500/#{bookmark.movie.poster_url}"%>
+  <h2><%= bookmark.movie.title %></h2>
+  <h3><%= bookmark.comment %></h3>
+  <p><%= link_to 'delete me', bookmark_path, method: :delete %></p>
+<% end %>
+
+<%= link_to 'back', lists_path %>
