@@ -1,4 +1,5 @@
 <%= link_to 'add a bookmark', new_list_bookmark_path(@list) %>
+<%= cl_image_path(@list.photo.key, height: 300, width: 400, crop: :fill) %>
 <h1><%= @list.name %></h1>
 <% @list.bookmarks.each do |bookmark| %>
   <%= image_tag "https://image.tmdb.org/t/p/w500/#{bookmark.movie.poster_url}"%>
