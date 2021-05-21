@@ -1,12 +1,20 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.wired.com/photos/5e97905fa8fb770008c8478d/master/pass/Cul-movietheater-1191021389.jpg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dm7zlvvgk/image/upload/v1621576318/Raj-Mandir_iqtnpq.jpg);">
   <div class="container">
-    <h1>Movie Lists</h1>
-    <p>These are the spiciest movie lists you can find</p>
-    <%= link_to 'Make a new list', new_list_path, class: "btn btn-flat" %>
+    <div class="banner-content">
+      <h1> Movie Lists</h1>
+      <p>These are the spiciest movie lists you can find</p>
+      <%= link_to 'Make a new list', new_list_path, class: "btn btn-flat" %>
+    </div>
   </div>
 </div>
-
-<% @lists.each do |list| %>
-  <%= list.photo.attached? ? cl_image_tag(list.photo.key, height: 300, width: 400, crop: :fill) : 'N/A' %>
-  <p><%= link_to list.name, list_path(list) %></p>
-<% end %>
+<div class="gallery">
+  <h3 style= "text-align:center">Lists(<%= @lists.count %>)</h3>
+  <div class="gallery-container">
+    <% @lists.each_with_index do |list, index| %>
+      <div class="gallery-item gallery-item-<%= index + 1 %>" data-index=<%= index + 1 %> style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : 'No photo :(' %>)">
+        <%= link_to list.name, list_path(list) %>
+      </div>
+    <% end %>
+  </div>
+  <div class="gallery-controls"></div>
+</div>
