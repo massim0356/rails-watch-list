@@ -18,6 +18,9 @@
   transition: all 0.3s ease-in-out;
   width: 150px;
   z-index: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .gallery-item-1 {

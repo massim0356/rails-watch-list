@@ -11,8 +11,8 @@
   <h3 style= "text-align:center">Lists(<%= @lists.count %>)</h3>
   <div class="gallery-container">
     <% @lists.each_with_index do |list, index| %>
-      <div class="gallery-item gallery-item-<%= index + 1 %>" data-index=<%= index + 1 %> style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : 'No photo :(' %>)">
-        <%= link_to list.name, list_path(list) %>
+      <div class="gallery-item gallery-item-<%= index + 1 %>" data-index=<%= index + 1 %> style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key, width: 150, height: 150) : 'No photo :(' %>)">
+        <p><%= link_to list.name, list_path(list) %></p>
       </div>
     <% end %>
   </div>
